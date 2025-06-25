@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #f6f8fa;
+}
+
+input, button, textarea {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #f6f8fa;
+}
+::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 4px;
+}

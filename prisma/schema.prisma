@@ -1,0 +1,54 @@
+// Prisma schema for simplechat SNS
+// ユーザー、投稿、いいね、返信のみ
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  posts     Post[]
+  likes     Like[]
+  replies   Reply[]
+  createdAt DateTime @default(now())
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  content   String
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  likes     Like[]
+  replies   Reply[]
+  createdAt DateTime @default(now())
+  deleted   Boolean  @default(false)
+}
+
+model Like {
+  id      Int   @id @default(autoincrement())
+  user    User  @relation(fields: [userId], references: [id])
+  userId  Int
+  post    Post  @relation(fields: [postId], references: [id])
+  postId  Int
+  createdAt DateTime @default(now())
+  @@unique([userId, postId])
+}
+
+model Reply {
+  id        Int      @id @default(autoincrement())
+  content   String
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
+  createdAt DateTime @default(now())
+  deleted   Boolean  @default(false)
+}
