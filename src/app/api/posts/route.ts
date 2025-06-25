@@ -23,7 +23,11 @@ export async function GET() {
     include: {
       author: { select: { id: true, username: true } },
       likes: true,
-      replies: true,
+      replies: {
+        include: {
+          author: { select: { id: true, username: true } }
+        }
+      },
     },
     orderBy: { createdAt: 'desc' },
   });

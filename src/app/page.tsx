@@ -14,6 +14,12 @@ interface Post {
   createdAt: string;
   deleted: boolean;
 }
+interface Reply {
+  id: number;
+  content: string;
+  author: User;
+  createdAt: string;
+}
 
 export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -22,6 +28,8 @@ export default function Home() {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
+  const [replyContent, setReplyContent] = useState<{ [key: number]: string }>({});
+  const [replying, setReplying] = useState<number | null>(null);
 
   useEffect(() => {
     fetchPosts();
@@ -101,6 +109,20 @@ export default function Home() {
     setLoading(false);
   }
 
+  async function handleReply(postId: number) {
+    if (!user || !replyContent[postId]) return;
+    setLoading(true);
+    await fetch("/api/reply", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: replyContent[postId], authorId: user.id, postId }),
+    });
+    setReplyContent(c => ({ ...c, [postId]: "" }));
+    setReplying(null);
+    await fetchPosts();
+    setLoading(false);
+  }
+
   return (
     <main className="max-w-xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">simplechat</h1>
@@ -171,7 +193,48 @@ export default function Home() {
                   削除
                 </button>
               )}
+              {user && (
+                <button
+                  className="text-blue-500"
+                  onClick={() => setReplying(replying === post.id ? null : post.id)}
+                  disabled={loading}
+                >
+                  返信
+                </button>
+              )}
             </div>
+            {/* 返信入力欄 */}
+            {user && replying === post.id && (
+              <div className="mt-2 flex gap-2">
+                <input
+                  className="border px-2 py-1 flex-1"
+                  placeholder="返信を入力..."
+                  value={replyContent[post.id] || ""}
+                  onChange={e => setReplyContent(c => ({ ...c, [post.id]: e.target.value }))}
+                  disabled={loading}
+                />
+                <button
+                  className="bg-blue-500 text-white px-3 py-1 rounded"
+                  onClick={() => handleReply(post.id)}
+                  disabled={loading || !(replyContent[post.id] || "").trim()}
+                >
+                  送信
+                </button>
+              </div>
+            )}
+            {/* 返信表示 */}
+            {post.replies && post.replies.length > 0 && (
+              <div className="mt-3 ml-4 border-l-2 border-blue-200 pl-3 space-y-2">
+                {post.replies.map((reply: Reply) => (
+                  <div key={reply.id} className="text-sm">
+                    <span className="font-bold text-blue-600">{reply.author.username}</span>
+                    <br />
+                    <span className="ml-2 text-gray-600 whitespace-pre-wrap">{reply.content}</span>
+                    <span className="ml-2 text-xs text-gray-400">{new Date(reply.createdAt).toLocaleString()}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
