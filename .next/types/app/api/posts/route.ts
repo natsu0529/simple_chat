@@ -1,4 +1,4 @@
-// File: /app/src/app/api/posts/route.ts
+// File: /Users/natsus/Desktop/simplechat/src/app/api/posts/route.ts
 import * as entry from '../../../../../src/app/api/posts/route.js'
 import type { NextRequest } from 'next/server.js'
 

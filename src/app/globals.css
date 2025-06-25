@@ -1,20 +1,57 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 body {
-  background: #f6f8fa;
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  background: linear-gradient(135deg, #3a1c32 0%, #7b294e 100%);
+  min-height: 100vh;
 }
 
-input, button, textarea {
-  outline: none;
+main {
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(58,28,50,0.15);
+  margin: 2rem auto;
+  padding: 2rem 1.5rem;
+  max-width: 540px;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  background: #f6f8fa;
+input, button {
+  font-family: inherit;
 }
+
+button.bg-wine {
+  color: #fff;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(123,41,78,0.08);
+}
+button.bg-wine:hover {
+  background: linear-gradient(90deg, #b2455e 0%, #7b2945e 100%);
+}
+
+input:focus {
+  outline: 2px solid #b2455e;
+  border-color: #b2455e;
+}
+
+.post-card {
+  background: #fff;
+  border: 1.5px solid #e5d0d6;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px 0 rgba(123,41,78,0.06);
+  padding: 1.2rem 1rem;
+}
+
+.reply-thread {
+  background: #f8e9ef;
+  border-left: 4px solid #b2455e;
+  border-radius: 0.5rem;
+  margin-top: 0.7rem;
+  padding: 0.7rem 1rem;
+}
+
 ::-webkit-scrollbar-thumb {
-  background: #e5e7eb;
-  border-radius: 4px;
+  background: #b2455e;
 }
