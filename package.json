@@ -10,6 +10,7 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "@vercel/speed-insights": "^1.2.0",
     "autoprefixer": "^10.4.21",
     "bcryptjs": "^3.0.2",
     "client-only": "^0.0.1",

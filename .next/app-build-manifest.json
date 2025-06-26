@@ -16,31 +16,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/posts/route.js"
     ],
-    "/api/login/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/login/route.js"
-    ],
-    "/api/reply/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/reply/route.js"
-    ],
-    "/api/like/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/like/route.js"
-    ],
-    "/api/posts/[id]/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/posts/[id]/route.js"
-    ],
-    "/api/search/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/search/route.js"
-    ],
     "/api/register/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

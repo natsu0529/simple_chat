@@ -425,6 +425,11 @@
   dependencies:
     csstype "^3.0.2"
 
+"@vercel/speed-insights@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@vercel/speed-insights/-/speed-insights-1.2.0.tgz"
+  integrity sha512-y9GVzrUJ2xmgtQlzFP2KhVRoCglwfRQgjyfY607aU0hh0Un6d0OUyrJkjuAlsV18qR4zfoFPs/BiIj9YDS6Wzw==
+
 autoprefixer@^10.4.21:
   version "10.4.21"
   resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.21.tgz"
@@ -647,7 +652,7 @@ nanoid@^3.3.11, nanoid@^3.3.6:
   resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.11.tgz"
   integrity sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==
 
-next@^15.3.4:
+next@^15.3.4, "next@>= 13":
   version "15.3.4"
   resolved "https://registry.npmjs.org/next/-/next-15.3.4.tgz"
   integrity sha512-mHKd50C+mCjam/gcnwqL1T1vPx/XQNFlXqFIVdgQdVAFY9iIQtY0IfaVflEYzKiqjeA7B0cYYMaCrmAYFjs4rA==
@@ -723,7 +728,7 @@ prisma@*, prisma@^6.10.1:
   dependencies:
     scheduler "^0.26.0"
 
-"react@^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", react@^19.1.0, "react@>= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0":
+"react@^18 || ^19 || ^19.0.0-rc", "react@^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", react@^19.1.0, "react@>= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0":
   version "19.1.0"
   resolved "https://registry.npmjs.org/react/-/react-19.1.0.tgz"
   integrity sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==

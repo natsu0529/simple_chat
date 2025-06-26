@@ -38,6 +38,8 @@ export async function GET() {
     });
     return NextResponse.json(posts);
   } catch (err: any) {
-    return NextResponse.json({ error: err?.message || 'サーバーエラー' }, { status: 500 });
+    console.error('API /api/posts error:', err);
+    // エラー時は空配列を返す
+    return NextResponse.json([], { status: 200 });
   }
 }
