@@ -77,13 +77,18 @@ export default function Home() {
 
   async function handleLogin() {
     setLoading(true);
+    setError(null);
     const res = await fetch("/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
     });
     const data = await res.json();
-    if (res.ok) setUser(data);
+    if (res.ok) {
+      setUser(data);
+    } else {
+      setError(data.error || "ログインに失敗しました");
+    }
     setLoading(false);
   }
 
